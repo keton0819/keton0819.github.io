@@ -2,24 +2,111 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <!-- 适配移动端 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人网站</title>
+    <title>我的 GitHub 个人主页</title>
     <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 页面主体样式 */
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部导航栏 */
+        header {
+            background-color: #24292e;
+            color: white;
+            padding: 1rem 2rem;
             text-align: center;
         }
+
+        /* 主要内容区域 */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        /* 标题样式 */
         h1 {
-            color: #333;
+            margin-bottom: 1rem;
+            color: #24292e;
+        }
+
+        h2 {
+            margin: 1.5rem 0 1rem;
+            color: #444;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 段落和链接样式 */
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的网站！</h1>
-    <p>这是我的 GitHub Pages 个人网站。</p>
-    <p>📅 创建于 2024年</p>
+    <!-- 页面头部 -->
+    <header>
+        <h1>欢迎来到我的个人主页</h1>
+    </header>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <section>
+            <h2>关于我</h2>
+            <p>你好！我是一名开发者，这是我基于 GitHub Pages 搭建的个人主页。</p>
+            <p>可以在这里分享我的项目、学习笔记和技术心得。</p>
+        </section>
+
+        <section>
+            <h2>我的 GitHub 仓库</h2>
+            <p>点击访问我的 GitHub：<a href="https://github.com/keton0819" target="_blank">keton0819</a></p>
+            <p>后续可以在这里添加自己的项目链接、介绍等内容。</p>
+        </section>
+
+        <section>
+            <h2>联系方式</h2>
+            <p>可以在这里留下你的邮箱、博客、社交账号等信息。</p>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 我的个人主页 | 基于 GitHub Pages 搭建</p>
+    </footer>
 </body>
 </html>
