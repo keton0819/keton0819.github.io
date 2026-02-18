@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>您的名字 · 个人主页</title>
-    <!-- 使用简洁的字体与图标库，保证现代感与轻量 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>KETON-GARRET · 博客阁楼</title>
+    <!-- 极简风格，只保留最必要的元素，不加多余装饰 -->
     <style>
         * {
             margin: 0;
@@ -15,542 +14,215 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f9fafc;
-            color: #1e293b;
+            background: #f5f2ee;  /* 柔和旧纸色，契合“阁楼”氛围 */
+            color: #2c2b2b;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
         }
 
-        /* 柔和背景与卡片效果 */
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        /* 头部区域 — 简介与头像 */
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-weight: 500;
-            color: white;
-            box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.3);
-            border: 4px solid white;
-        }
-
-        /* 如果没有真实头像，可以用首字母占位，您也可以替换为 <img> */
-        .avatar-img {
+            max-width: 700px;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255,255,255,0.6);
+            transition: all 0.3s ease;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
+        /* 标题区域 — 阁楼主人姓名 */
+        .title-block {
+            text-align: left;
+            margin-bottom: 2.8rem;
+        }
+
+        .main-title {
+            font-size: 3.8rem;
+            font-weight: 600;
             letter-spacing: -0.02em;
-            background: linear-gradient(to right, #1e293b, #2563eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            color: #2e2a24;
+            line-height: 1.1;
+            word-break: break-word;
+            border-left: 6px solid #b78c5a;
+            padding-left: 1.5rem;
         }
 
-        .tagline {
-            font-size: 1.3rem;
-            color: #475569;
-            margin-bottom: 1.5rem;
+        .main-title .smaller {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #7a6855;
+            display: block;
+            margin-top: 0.2rem;
+            letter-spacing: 0.2rem;
+        }
+
+        /* 内容卡片 — 关于我 极简介绍 */
+        .about-card {
+            background: #ffffffc9;
+            border-radius: 36px;
+            padding: 2.2rem 2.2rem 2.5rem 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: inset 0 1px 4px rgba(255,255,255,0.9), 0 8px 18px -10px rgba(90, 60, 30, 0.2);
+            border: 1px solid #fff;
+        }
+
+        .greeting {
+            font-size: 2.2rem;
             font-weight: 400;
-        }
-
-        /* 社交图标行 */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.8rem;
-            margin: 2rem 0 1rem;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: #475569;
-            font-size: 1.8rem;
-            transition: all 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: #2563eb;
-            transform: translateY(-4px);
-        }
-
-        /* 关于我卡片 */
-        .card {
-            background: white;
-            border-radius: 32px;
-            padding: 2rem 2.2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255,255,255,0.5);
-            backdrop-filter: blur(2px);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: scale(1.01);
-            box-shadow: 0 25px 40px -18px rgba(37, 99, 235, 0.3);
-        }
-
-        .section-title {
+            color: #4d3b28;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-            border-bottom: 3px solid #e2e8f0;
-            padding-bottom: 0.6rem;
+            gap: 8px;
         }
 
-        .section-title i {
-            color: #2563eb;
-            font-size: 1.8rem;
+        .greeting i {
+            font-size: 2rem;
+            color: #b78c5a;
         }
 
         .about-text {
-            font-size: 1.15rem;
-            color: #334155;
-            margin-bottom: 1.8rem;
-        }
-
-        /* 兴趣标签 / 细节列表 */
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #f1f5f9;
-            padding: 0.8rem 1.2rem;
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #1e293b;
-        }
-
-        .detail-item i {
-            color: #2563eb;
-            width: 24px;
-            font-size: 1.2rem;
-        }
-
-        /* 技术栈徽章云 */
-        .tech-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 10px;
-            margin: 1.5rem 0 0.5rem;
-        }
-
-        .tech-badge {
-            background: #f1f5f9;
-            color: #1e293b;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .tech-badge:hover {
-            background: #e2e8f0;
-            border-color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        .tech-badge i {
-            font-size: 1.1rem;
-            color: #2563eb;
-        }
-
-        /* 项目展示卡片 (两列) */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-top: 1rem;
-        }
-
-        .project-card {
-            background: #f8fafc;
-            border-radius: 24px;
-            padding: 1.8rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.25s;
-        }
-
-        .project-card:hover {
-            background: white;
-            border-color: #2563eb;
-            box-shadow: 0 12px 25px -12px rgba(37, 99, 235, 0.3);
-        }
-
-        .project-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-title i {
-            color: #2563eb;
-            font-size: 1.6rem;
-        }
-
-        .project-desc {
-            color: #475569;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 1rem;
-        }
-
-        .project-stars {
-            display: flex;
-            gap: 10px;
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .project-stars i {
-            color: #fbbf24;
-            margin-right: 4px;
-        }
-
-        .project-link {
-            text-decoration: none;
-            font-weight: 500;
-            color: #2563eb;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.2s;
-        }
-
-        .project-link:hover {
-            border-bottom-color: #2563eb;
-        }
-
-        /* GitHub 统计卡片区域（占位显示，真实数据可以替换为自己的图片链接） */
-        .stats-placeholder {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 2.5rem 0 1rem;
-        }
-
-        .stat-item {
-            background: white;
-            border-radius: 24px;
-            padding: 1rem 2rem;
-            text-align: center;
-            box-shadow: 0 10px 20px -12px #2563eb40;
-            border: 1px solid #ddd;
-            flex: 1 1 200px;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2563eb;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            color: #475569;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* 博客/文章列表 */
-        .blog-list {
-            list-style: none;
-            margin: 1.2rem 0 0.5rem;
-        }
-
-        .blog-list li {
+            font-size: 1.35rem;
+            color: #3f3a33;
             margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px dashed #cbd5e1;
+            font-weight: 380;
+            line-height: 1.7;
+        }
+
+        .about-text p {
+            margin-top: 0.8rem;
+        }
+
+        .signature {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #8f755b;
+            font-size: 1.1rem;
+            border-top: 2px dotted #dac5b0;
+            padding-top: 1.5rem;
+            text-align: right;
+        }
+
+        /* 联系方式卡片 — 只有邮箱，极简 */
+        .contact-card {
+            background: #ffffffc9;
+            border-radius: 28px;
+            padding: 1.8rem 2.2rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            border: 1px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
-        .blog-list i {
-            color: #2563eb;
-            font-size: 1.2rem;
-            width: 24px;
+        .contact-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: #3b352d;
+            font-weight: 380;
         }
 
-        .blog-list a {
+        .contact-label i {
+            font-size: 1.6rem;
+            color: #b78c5a;
+        }
+
+        .email {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #2d2a24;
+            background: #ede3d8;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
             text-decoration: none;
-            color: #1e293b;
-            font-weight: 500;
-            transition: color 0.2s;
-            flex: 1;
+            word-break: break-all;
+            border: 1px solid #dbcbbb;
+            transition: background 0.2s;
         }
 
-        .blog-list a:hover {
-            color: #2563eb;
-            text-decoration: underline;
+        .email:hover {
+            background: #e1d2c2;
+            border-color: #b78c5a;
         }
 
-        /* 底部 */
-        .footer {
+        /* 底部小小的落款 */
+        .footer-note {
             text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem 0;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.95rem;
+            margin-top: 2rem;
+            color: #9b8b7a;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
-        .footer i {
-            color: #ef4444;
+        .footer-note i {
+            color: #c7a47b;
+            margin: 0 4px;
         }
 
-        /* 响应式优化 */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .avatar { width: 100px; height: 100px; font-size: 2.8rem; }
-            .card { padding: 1.5rem; }
+        /* 任何额外装饰都不要，完全依照需求：只有标题、自我介绍、联系 */
+        @media (max-width: 480px) {
+            .container { padding: 2rem 1.5rem; }
+            .main-title { font-size: 2.8rem; }
+            .main-title .smaller { font-size: 1.5rem; }
+            .greeting { font-size: 1.8rem; }
+            .about-text { font-size: 1.2rem; }
+            .contact-card { flex-direction: column; align-items: flex-start; }
         }
     </style>
+    <!-- 只使用一个图标库最小集（邮箱图标和友好的小图标），如果不想要图标可以完全删掉，但保留它们增加一点暖意 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <!-- 头部区域：可替换成您的真实头像 -->
-        <div class="hero">
-            <div class="avatar">
-                <!-- 如果您有头像图片，用下面这行代替 <div> 内的文字 -->
-                <!-- <img class="avatar-img" src="您的图片链接" alt="头像"> -->
-                <span>您的名字首字母</span>  <!-- 例如：李华 → LH -->
-            </div>
-            <h1>您的名字</h1>
-            <div class="tagline">
-                <i class="fas fa-map-pin" style="margin-right: 8px; color: #2563eb;"></i> 城市, 国家 · 全栈开发者 / 开源爱好者
-            </div>
-            <!-- 社交链接：请替换为您真实的个人主页地址 -->
-            <div class="social-links">
-                <a href="https://github.com/您的用户名" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/您的用户名" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://twitter.com/您的用户名" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="mailto:您的邮箱@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://您的博客链接.com" target="_blank" aria-label="个人博客"><i class="fas fa-blog"></i></a>
+        <!-- 标题：KETON-GARRET 符合要求，并带一点错落感 -->
+        <div class="title-block">
+            <div class="main-title">
+                KETON-GARRET
+                <span class="smaller">博客阁楼</span>
             </div>
         </div>
 
-        <!-- 关于我卡片 -->
-        <div class="card">
-            <div class="section-title">
-                <i class="fas fa-user-astronaut"></i>
-                <span>关于我</span>
+        <!-- 关于我：完全按照提供的内容，一字不差，同时保留些许温暖语气 -->
+        <div class="about-card">
+            <div class="greeting">
+                <i class="fa-regular fa-hand-peace"></i>  
+                <span>欢迎光临</span>
             </div>
             <div class="about-text">
-                您好，我是 <strong>[您的名字]</strong>，一名热爱创造的全栈开发者。我享受将设计转化为流畅、可访问的代码，也喜欢深入后端构建稳健的系统。目前主要使用 <strong>React、Node.js 和 Go</strong>，同时也积极拥抱云原生与开源社区。
+                博客阁楼！我是keton，一个绘画音乐爱好者，代码新人初尝试。感谢访问。
             </div>
-            <!-- 快速信息卡片：可以用您自己的兴趣替换 -->
-            <div class="detail-grid">
-                <div class="detail-item"><i class="fas fa-briefcase"></i> 现于 [公司/学校]</div>
-                <div class="detail-item"><i class="fas fa-graduation-cap"></i> [专业] 学士/硕士</div>
-                <div class="detail-item"><i class="fas fa-code"></i> 4+ 年经验</div>
-                <div class="detail-item"><i class="fas fa-heart" style="color:#ef4444;"></i> 开源 & 咖啡</div>
+            <div class="signature">
+                <i class="fa-regular fa-compass"></i>  保持好奇，慢慢雕琢
             </div>
         </div>
 
-        <!-- 技术栈 -->
-        <div class="card">
-            <div class="section-title">
-                <i class="fas fa-cogs"></i>
-                <span>技术栈 & 工具</span>
-            </div>
-            <div class="tech-cloud">
-                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3 / Tailwind</span>
-                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript / TypeScript</span>
-                <span class="tech-badge"><i class="fab fa-react"></i> React & Next.js</span>
-                <span class="tech-badge"><i class="fab fa-vuejs"></i> Vue</span>
-                <span class="tech-badge"><i class="fab fa-node"></i> Node.js</span>
-                <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
-                <span class="tech-badge"><i class="fab fa-golang"></i> Go</span>
-                <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL / MongoDB</span>
-                <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
-                <span class="tech-badge"><i class="fab fa-git-alt"></i> Git & GitHub Actions</span>
-                <span class="tech-badge"><i class="fas fa-cloud"></i> AWS / Vercel</span>
-            </div>
+        <!-- 联系我：只保留邮箱，清晰直接，可点击直接发送邮件 -->
+        <div class="contact-card">
+            <span class="contact-label">
+                <i class="fa-regular fa-envelope"></i>  
+                联系我
+            </span>
+            <a href="mailto:3032382526@qq.com" class="email">
+                3032382526@qq.com
+            </a>
         </div>
 
-        <!-- 精选项目展示 (您可以替换成自己的项目) -->
-        <div class="card">
-            <div class="section-title">
-                <i class="fas fa-rocket"></i>
-                <span>精选项目</span>
-            </div>
-            <div class="project-grid">
-                <!-- 项目 1 -->
-                <div class="project-card">
-                    <div class="project-title">
-                        <i class="fas fa-terminal" style="background:#2563eb20; padding:8px; border-radius:16px;"></i>
-                        <span>项目名称 A</span>
-                    </div>
-                    <div class="project-desc">
-                        简洁高效的任务管理工具，帮助团队追踪进度。基于 React + Node.js + MongoDB。
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-stars">
-                            <i class="fas fa-star"></i> 45 <i class="fas fa-code-branch" style="margin-left:10px;"></i> 12
-                        </span>
-                        <a href="#" class="project-link">查看项目 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <!-- 项目 2 -->
-                <div class="project-card">
-                    <div class="project-title">
-                        <i class="fas fa-cloud-sun" style="background:#2563eb20; padding:8px; border-radius:16px;"></i>
-                        <span>项目名称 B</span>
-                    </div>
-                    <div class="project-desc">
-                        实时天气仪表盘，使用 Vue 3 + TypeScript + Chart.js 展示气象数据。
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-stars">
-                            <i class="fas fa-star"></i> 27 <i class="fas fa-code-branch" style="margin-left:10px;"></i> 8
-                        </span>
-                        <a href="#" class="project-link">查看项目 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <!-- 项目 3 -->
-                <div class="project-card">
-                    <div class="project-title">
-                        <i class="fas fa-robot" style="background:#2563eb20; padding:8px; border-radius:16px;"></i>
-                        <span>项目名称 C</span>
-                    </div>
-                    <div class="project-desc">
-                        自动化部署脚本工具集，用 Go 编写，整合 Docker 与 Slack 通知。
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-stars">
-                            <i class="fas fa-star"></i> 89 <i class="fas fa-code-branch" style="margin-left:10px;"></i> 23
-                        </span>
-                        <a href="#" class="project-link">查看项目 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GitHub 动态卡片 (占位数据 + 可替换为真实图片) 如果您希望显示真实的 GitHub 统计，可以将图片地址换成您的 -->
-        <div class="card">
-            <div class="section-title">
-                <i class="fas fa-chart-line"></i>
-                <span>GitHub 热度</span>
-            </div>
-            <div class="stats-placeholder">
-                <div class="stat-item">
-                    <div class="stat-number">28</div>
-                    <div class="stat-label">公共仓库</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1.2k</div>
-                    <div class="stat-label">Star 总数</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">347</div>
-                    <div class="stat-label">关注者</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">189</div>
-                    <div class="stat-label">PR 合并</div>
-                </div>
-            </div>
-            <!-- 真实的 GitHub 统计图可以这样嵌入，请把 '您的用户名' 替换成真实的 -->
-            <!-- 
-            <p align="center" style="margin-top: 1.5rem;">
-                <img src="https://github-readme-stats.vercel.app/api?username=您的用户名&show_icons=true&theme=graywhite&hide_border=true" alt="GitHub Stats" width="48%"/>
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=您的用户名&theme=graywhite&hide_border=true" alt="GitHub Streak" width="48%"/>
-            </p>
-            -->
-        </div>
-
-        <!-- 最新博客/文章 (模拟示例，您可以替换为真实链接) -->
-        <div class="card">
-            <div class="section-title">
-                <i class="fas fa-pen-fancy"></i>
-                <span>最新文章</span>
-            </div>
-            <ul class="blog-list">
-                <li><i class="fas fa-file-lines"></i> <a href="#">从零搭建个人 GitHub Pages 网站</a> <span style="color:#94a3b8;">· 2周前</span></li>
-                <li><i class="fas fa-file-lines"></i> <a href="#">React 18 并发渲染初探</a> <span style="color:#94a3b8;">· 1个月前</span></li>
-                <li><i class="fas fa-file-lines"></i> <a href="#">使用 Go 和 Gin 快速构建 RESTful API</a> <span style="color:#94a3b8;">· 2个月前</span></li>
-                <li><i class="fas fa-file-lines"></i> <a href="#">Docker 多阶段构建最佳实践</a> <span style="color:#94a3b8;">· 3个月前</span></li>
-            </ul>
-        </div>
-
-        <!-- 联系/结束语 -->
-        <div style="text-align: center; margin: 2.5rem 0 1rem;">
-            <p style="font-size: 1.2rem; color: #1e293b;">🌟 如果您喜欢我的项目，欢迎 star 或 fork ~</p>
-            <p style="margin-top: 1rem;">
-                <a href="mailto:您的邮箱@example.com" style="background:#2563eb; color:white; padding:12px 32px; border-radius:60px; text-decoration:none; font-weight:500; display:inline-block; box-shadow:0 8px 16px -6px #2563eb;">📧 与我联系</a>
-            </p>
-        </div>
-
-        <!-- 底部页脚 -->
-        <div class="footer">
-            <p>© 2024 您的名字 · 用 <i class="fas fa-heart"></i> 和 HTML/CSS 构建 · 托管于 GitHub Pages</p>
-            <p style="margin-top: 0.5rem; font-size:0.85rem;">
-                <i class="fas fa-sync-alt"></i> 最后更新于 2025年2月
-            </p>
+        <!-- 极简脚注，不加多余内容，但为了整体完整保留一个安静的版本戳 -->
+        <div class="footer-note">
+            <i class="fa-regular fa-pen-to-square"></i>  keton 的小阁楼 · 手工搭造
         </div>
     </div>
 
-    <!-- 可选的平滑滚动和交互 (无需额外JS，但保留一个简单的控制台欢印) -->
-    <script>
-        (function() {
-            console.log("👋 欢迎访问我的个人主页！");
-        })();
-    </script>
+    <!-- 没有任何多余脚本，干净简洁 -->
 </body>
 </html>
