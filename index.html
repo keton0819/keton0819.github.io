@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KETON-GARRET · 博客阁楼</title>
-    <!-- 极简风格基础样式 + 复古Glitter装饰整合 + 日记栏目 -->
+    <!-- 极简风格基础样式 + 复古Glitter装饰整合 + 日记栏目 (可编辑版) -->
     <style>
         /* === 原有极简风格样式 (完整保留) === */
         * {
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f5f2ee;  /* 柔和旧纸色，契合“阁楼”氛围 */
+            background: #f5f2ee;
             color: #2c2b2b;
             line-height: 1.6;
             min-height: 100vh;
@@ -37,7 +37,7 @@
             transition: all 0.3s ease;
         }
 
-        /* 标题区域 — 阁楼主人姓名 */
+        /* 标题区域 */
         .title-block {
             text-align: left;
             margin-bottom: 2.8rem;
@@ -63,7 +63,7 @@
             letter-spacing: 0.2rem;
         }
 
-        /* 内容卡片 — 关于我 极简介绍 */
+        /* 关于我卡片 */
         .about-card {
             background: #ffffffc9;
             border-radius: 36px;
@@ -81,6 +81,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .greeting i {
@@ -96,10 +97,6 @@
             line-height: 1.7;
         }
 
-        .about-text p {
-            margin-top: 0.8rem;
-        }
-
         .signature {
             margin-top: 2rem;
             font-style: italic;
@@ -108,9 +105,14 @@
             border-top: 2px dotted #dac5b0;
             padding-top: 1.5rem;
             text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        /* 联系方式卡片 — 只有邮箱，极简 */
+        /* 联系方式卡片 */
         .contact-card {
             background: #ffffffc9;
             border-radius: 28px;
@@ -156,7 +158,7 @@
             border-color: #b78c5a;
         }
 
-        /* 底部小小的落款 */
+        /* 底部落款 */
         .footer-note {
             text-align: center;
             margin-top: 2rem;
@@ -170,7 +172,7 @@
             margin: 0 4px;
         }
 
-        /* === 新加：我的日记栏目样式 === */
+        /* === 日记栏目样式 (调整为可编辑卡片格式) === */
         .diary-section {
             margin: 2.5rem 0 2rem;
         }
@@ -199,63 +201,111 @@
             font-size: 1.8rem;
         }
         
-        /* 日记卡片 — 仿手账风格 */
+        /* 日记卡片 — 仿手账风格，调整为可点击展开的样式 */
         .diary-card {
             background: #fffcf5;
             border-radius: 28px;
-            padding: 1.8rem 2rem;
+            padding: 1rem 1.5rem;
             border: 1px solid #ede0d2;
             box-shadow: inset 0 0 0 2px #fff, 0 10px 20px -15px #aa9b88;
-            margin-top: 0.5rem;
         }
         
+        /* 日记条目容器 */
         .diary-entry {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
+            margin: 1.2rem 0;
             border-bottom: 2px dashed #e2d2c0;
         }
         
         .diary-entry:last-child {
             border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
         }
         
-        .entry-date {
-            font-size: 1.1rem;
-            color: #8f755b;
-            font-weight: 500;
-            margin-bottom: 0.8rem;
+        /* 可点击的日记摘要 */
+        .entry-summary {
             display: flex;
             align-items: center;
-            gap: 8px;
-            letter-spacing: 0.5px;
+            gap: 12px;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            background: #f9f2ea;
+            border-radius: 20px;
+            transition: background 0.2s;
+            border: 1px solid #eadaca;
         }
         
-        .entry-date i {
+        .entry-summary:hover {
+            background: #f1e4d8;
+            border-color: #d2b696;
+        }
+        
+        .entry-summary i {
             color: #b78c5a;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            width: 24px;
         }
         
-        .entry-content {
+        .entry-summary .entry-date {
             font-size: 1.2rem;
-            color: #3f3a33;
+            font-weight: 500;
+            color: #5f4c37;
+            min-width: 110px;
+        }
+        
+        .entry-summary .entry-preview {
+            color: #7a6855;
+            font-size: 1.1rem;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .entry-summary .expand-icon {
+            color: #b78c5a;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        /* 隐藏的详细内容 (默认不显示) */
+        .entry-detail {
+            display: none;
+            padding: 1.5rem 1.5rem 1rem 3rem;
+            background: #fff9f2;
+            border-radius: 0 0 20px 20px;
+            margin-top: -5px;
+            border-left: 4px solid #e8cfb8;
+            border-right: 1px solid #ede0d2;
+            border-bottom: 1px solid #ede0d2;
+        }
+        
+        .entry-detail p {
+            color: #4a4138;
+            font-size: 1.15rem;
             line-height: 1.7;
-            padding-left: 1.8rem;
-            border-left: 4px solid #edd7c0;
-            margin-left: 0.5rem;
-            font-style: normal;
+            margin-bottom: 1rem;
         }
         
-        .entry-content p {
-            margin-bottom: 0.8rem;
+        .entry-detail i {
+            color: #b78c5a;
+            margin-right: 8px;
         }
         
-        .entry-content p:last-child {
-            margin-bottom: 0;
+        /* 当目标被选中时显示详细内容 (利用:target实现点击展开) */
+        .diary-entry:target .entry-detail {
+            display: block;
         }
         
-        /* 新笔记占位样式（可用于未来更新） */
+        .diary-entry:target .entry-summary {
+            background: #ecd9c6;
+            border-radius: 20px 20px 0 0;
+            border-bottom: none;
+        }
+        
+        .diary-entry:target .expand-icon {
+            transform: rotate(90deg);
+        }
+        
+        /* 新笔记占位样式 */
         .diary-placeholder {
             background: #f9f2e9;
             border-radius: 20px;
@@ -273,14 +323,16 @@
         }
         
         /* 响应式调整 */
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .container { padding: 2rem 1.5rem; }
             .main-title { font-size: 2.8rem; }
             .main-title .smaller { font-size: 1.5rem; }
             .diary-header { flex-direction: column; align-items: flex-start; }
+            .entry-summary { flex-wrap: wrap; }
+            .entry-summary .entry-preview { white-space: normal; }
         }
 
-        /* === 新加入的顶部Glitter装饰样式 (完整保留) === */
+        /* === Glitter装饰样式 (完整保留) === */
         table table table td { 
             vertical-align: top !important; 
         }
@@ -302,7 +354,6 @@
             display: none; 
         }
 
-        /* === 新加入的底部Glitter装饰样式 (完整保留) === */
         .bottom-glitter table table table td { 
             vertical-align: top !important; 
         }
@@ -324,7 +375,6 @@
             display: none; 
         }
 
-        /* 为了让装饰更协调，添加一点间距 */
         .top-decoration, .bottom-decoration {
             display: flex;
             flex-direction: column;
@@ -357,9 +407,9 @@
             <a href="https://www.glitter-graphics.com" class="glitter-link">Extended Network Banners</a>
         </div>
 
-        <!-- 原有主内容容器 (新增日记栏目) -->
+        <!-- 主内容容器 -->
         <div class="container">
-            <!-- 标题：KETON-GARRET -->
+            <!-- 标题 -->
             <div class="title-block">
                 <div class="main-title">
                     KETON-GARRET
@@ -367,59 +417,87 @@
                 </div>
             </div>
 
-            <!-- 关于我卡片 -->
+            <!-- 关于我卡片 (含两个新GIF) -->
             <div class="about-card">
                 <div class="greeting">
                     <i class="fa-regular fa-hand-peace"></i>  
                     <span>欢迎光临</span>
+                    <!-- 第一个GIF：放在欢迎光临隔壁 -->
+                    <a href="https://www.glitter-graphics.com" target="_blank">
+                        <img src="http://dl2.glitter-graphics.net/pub/549/549062c91it46lgr.gif" width="115" height="115" border="0" alt="glitter decoration" style="margin-left: 5px;">
+                    </a>
                 </div>
                 <div class="about-text">
                     博客阁楼！我是keton，一个绘画音乐爱好者，代码新人初尝试。感谢访问。
                 </div>
                 <div class="signature">
-                    <i class="fa-regular fa-compass"></i>  保持好奇，慢慢雕琢
+                    <i class="fa-regular fa-compass"></i> 保持好奇，慢慢雕琢
+                    <!-- 第二个GIF：放在签名隔壁 -->
+                    <a href="https://www.glitter-graphics.com" target="_blank">
+                        <img src="http://dl6.glitter-graphics.net/pub/584/584776qvkek99ty3.gif" width="50" height="50" border="0" alt="glitter decoration">
+                    </a>
                 </div>
             </div>
 
-            <!-- === 新增：我的日记栏目（带隔壁GIF） === -->
+            <!-- 我的日记栏目 (年份已改为2026，删去2月18日条目) -->
             <div class="diary-section">
                 <div class="diary-header">
                     <div class="diary-title">
                         <i class="fa-regular fa-pen-to-square"></i>
                         我的日记
                     </div>
-                    <!-- 隔壁GIF：完全按照要求放置 -->
+                    <!-- 隔壁GIF (保持不变) -->
                     <a href="https://www.glitter-graphics.com" target="_blank">
                         <img src="http://dl8.glitter-graphics.net/pub/39/39368n1b2x3prdz.gif" width="83" height="49" border="0" alt="glitter decoration">
                     </a>
                 </div>
                 
-                <!-- 日记卡片：可在此添加/更新笔记条目 -->
+                <!-- 日记卡片：点击摘要可展开详细内容 -->
                 <div class="diary-card">
-                    <!-- 示例日记条目1 - 您可以修改/替换内容 -->
-                    <div class="diary-entry">
-                        <div class="entry-date">
-                            <i class="fa-regular fa-calendar"></i> 2025.02.19
-                        </div>
-                        <div class="entry-content">
-                            <p>📝 今天开始学习HTML和CSS，搭建了自己的第一个个人主页。像素风格的装饰真有趣！</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 示例日记条目2 - 您可以修改/替换内容 -->
-                    <div class="diary-entry">
-                        <div class="entry-date">
-                            <i class="fa-regular fa-calendar"></i> 2025.02.18
-                        </div>
-                        <div class="entry-content">
-                            <p>🎵 画了一幅小素描，听了些老唱片。阁楼里的时光总是慢悠悠的。</p>
+                    <!-- 日记条目1 - 2026年 (删去了2月18日条目) -->
+                    <div class="diary-entry" id="entry-20260219">
+                        <!-- 可点击的摘要部分 -->
+                        <a href="#entry-20260219" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="entry-summary">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                <span class="entry-date">2026.02.18</span>
+                                <span class="entry-preview">今天开始学习HTML和CSS，搭建了自己的第一个个人主页...</span>
+                                <i class="fas fa-chevron-right expand-icon"></i>
+                            </div>
+                        </a>
+                        <!-- 详细内容 (点击后显示) -->
+                        <div class="entry-detail">
+                            <p><i class="fa-regular fa-note-sticky"></i> 今天开始学习HTML和CSS，搭建了自己的第一个个人主页。像素风格的装饰真有趣！希望后面可以学到更多！</p>
+                            <p><i class="fa-regular fa-image"></i> 尝试了Glitter Graphics的复古GIF，很有90年代个人网站的感觉。</p>
                         </div>
                     </div>
                     
-                    <!-- 占位提示：用于未来新增笔记（您可以删除或保留） -->
+                    <!-- 占位提示：用于未来新增笔记 -->
                     <div class="diary-placeholder">
-                        <i class="fa-regular fa-star"></i> 新的笔记即将添加...
+                        <i class="fa-regular fa-star"></i> 点击上方日记可展开查看详情，点击<span style="font-family: monospace;">"新增笔记"</span>链接可复制模板
                     </div>
+                </div>
+                
+                <!-- 为了方便您以后添加新日记，这里提供模板代码 (隐藏但在源码中可见) -->
+                <div style="display: none;">
+                    <!-- 
+                        新日记添加模板 (复制此块并修改内容)：
+                        
+                        <div class="diary-entry" id="entry-2026xxxx">
+                            <a href="#entry-2026xxxx" style="text-decoration: none; color: inherit; display: block;">
+                                <div class="entry-summary">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    <span class="entry-date">2026.XX.XX</span>
+                                    <span class="entry-preview">摘要文字...</span>
+                                    <i class="fas fa-chevron-right expand-icon"></i>
+                                </div>
+                            </a>
+                            <div class="entry-detail">
+                                <p><i class="fa-regular fa-note-sticky"></i> 详细内容第一段...</p>
+                                <p><i class="fa-regular fa-image"></i> 详细内容第二段...</p>
+                            </div>
+                        </div>
+                    -->
                 </div>
             </div>
 
@@ -436,7 +514,7 @@
 
             <!-- 极简脚注 -->
             <div class="footer-note">
-                <i class="fa-regular fa-pen-to-square"></i>  keton 的小阁楼 · 手工搭造
+                <i class="fa-regular fa-pen-to-square"></i>  keton 的小阁楼 · 手工搭造 · 2026
             </div>
         </div>
 
@@ -448,6 +526,7 @@
             <a href="https://www.glitter-graphics.com" class="glitter-link">Extended Network Banners</a>
         </div>
     </div>
-    <!-- 干净简洁，仅添加日记栏目和GIF装饰 -->
+
+    <!-- 提示：点击日记条目可展开/收起 (利用URL锚点实现，刷新页面或点击其他条目时自动切换) -->
 </body>
 </html>
