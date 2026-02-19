@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KETON-GARRET · 博客阁楼</title>
-    <!-- 极简风格基础样式 + 复古Glitter装饰整合 + 日记栏目 (可编辑版) -->
+    <!-- 像素字体与复古Glitter背景整合 -->
     <style>
-        /* === 原有极简风格样式 (完整保留) === */
+        /* === 新背景应用 (您提供的代码) === */
+        body {
+            background-image: url('http://dl7.glitter-graphics.net/pub/2728/2728597xpdvfoj0d4.jpg');
+            background-attachment: fixed;
+            background-repeat: repeat;
+            /* 保留原有背景色作为fallback */
+            background-color: #3a2e3f;
+        }
+
+        /* === 像素字体全面应用 === */
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +23,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f5f2ee;
+            font-family: 'Press Start 2P', 'VT323', 'Courier New', 'MS Gothic', 'Fixedsys', monospace;
             color: #2c2b2b;
             line-height: 1.6;
             min-height: 100vh;
@@ -23,24 +31,31 @@
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
+            /* 字体平滑关闭，保持像素感 */
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
+            font-smooth: never;
         }
 
+        /* 调整像素字体在不同大小时的显示 */
         .container {
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            border-radius: 48px;
+            background: rgba(30, 20, 35, 0.85);  /* 深紫色半透明，更好地衬托背景 */
+            backdrop-filter: blur(2px);  /* 轻微模糊让背景更融合 */
+            border-radius: 32px;
             padding: 3rem 2.5rem;
-            box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255,255,255,0.6);
-            transition: all 0.3s ease;
+            box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.5);
+            border: 4px solid #c9a8e6;
+            border-right-color: #7b4f9e;
+            border-bottom-color: #623d82;
+            image-rendering: pixelated;
         }
 
         /* 标题区域 */
         .title-block {
             text-align: left;
-            margin-bottom: 2.8rem;
+            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -48,135 +63,155 @@
         }
 
         .main-title {
-            font-size: 3.8rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: #2e2a24;
-            line-height: 1.1;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #f5e6b8;
+            line-height: 1.3;
             word-break: break-word;
-            border-left: 6px solid #b78c5a;
+            border-left: 6px solid #d9a7ff;
             padding-left: 1.5rem;
+            text-shadow: 3px 3px 0 #9b6bc0, 5px 5px 0 #482569;
         }
 
         .main-title .smaller {
-            font-size: 2rem;
-            font-weight: 300;
-            color: #7a6855;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #cba8f0;
             display: block;
-            margin-top: 0.2rem;
-            letter-spacing: 0.2rem;
+            margin-top: 0.5rem;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 0 #6a3d8a;
         }
 
         /* 关于我卡片 */
         .about-card {
-            background: #ffffffc9;
-            border-radius: 36px;
-            padding: 2.2rem 2.2rem 2.5rem 2.2rem;
+            background: rgba(40, 25, 50, 0.8);
+            border-radius: 28px;
+            padding: 2rem 2rem 2.2rem 2rem;
             margin-bottom: 2.2rem;
-            box-shadow: inset 0 1px 4px rgba(255,255,255,0.9), 0 8px 18px -10px rgba(90, 60, 30, 0.2);
-            border: 1px solid #fff;
+            border: 4px solid #b386d9;
+            border-right-color: #6f4296;
+            border-bottom-color: #5a3677;
+            box-shadow: inset -2px -2px 0 #321e3f, 8px 8px 0 #1e1028;
         }
 
         .greeting {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 400;
-            color: #4d3b28;
+            color: #f5cf8c;
             margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
+            font-family: 'VT323', monospace;
+            letter-spacing: 1px;
         }
 
         .greeting i {
             font-size: 2rem;
-            color: #b78c5a;
+            color: #d9a7ff;
         }
 
         .about-text {
-            font-size: 1.35rem;
-            color: #3f3a33;
+            font-size: 1.2rem;
+            color: #f0deb8;
             margin-bottom: 1rem;
-            font-weight: 380;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.2);
+            padding: 1.2rem;
+            border-radius: 16px;
+            border: 2px dashed #a87fc3;
         }
 
         .signature {
-            margin-top: 2rem;
+            margin-top: 1.8rem;
             font-style: italic;
-            color: #8f755b;
+            color: #cbb2e5;
             font-size: 1.1rem;
-            border-top: 2px dotted #dac5b0;
-            padding-top: 1.5rem;
+            border-top: 3px dotted #9f78b9;
+            padding-top: 1.2rem;
             text-align: right;
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
+            font-family: 'VT323', monospace;
         }
 
         /* 联系方式卡片 */
         .contact-card {
-            background: #ffffffc9;
-            border-radius: 28px;
-            padding: 1.8rem 2.2rem;
+            background: rgba(45, 30, 55, 0.8);
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1.2rem;
-            border: 1px solid #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 4px solid #bf97e3;
+            border-right-color: #7246a0;
+            border-bottom-color: #593b78;
+            box-shadow: inset -2px -2px 0 #2d1a3b;
         }
 
         .contact-label {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.3rem;
-            color: #3b352d;
-            font-weight: 380;
+            font-size: 1.2rem;
+            color: #f0d68e;
+            font-family: 'VT323', monospace;
+            letter-spacing: 1px;
         }
 
         .contact-label i {
-            font-size: 1.6rem;
-            color: #b78c5a;
+            font-size: 1.8rem;
+            color: #dbb3ff;
         }
 
         .email {
-            font-size: 1.35rem;
-            font-weight: 400;
-            color: #2d2a24;
-            background: #ede3d8;
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
+            font-size: 1.2rem;
+            color: #e7f0b0;
+            background: #2b1738;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
             text-decoration: none;
             word-break: break-all;
-            border: 1px solid #dbcbbb;
-            transition: background 0.2s;
+            border: 3px solid #b588df;
+            border-right-color: #623a8a;
+            border-bottom-color: #4f2d72;
+            transition: all 0.1s;
+            font-family: 'Courier New', monospace;
         }
 
         .email:hover {
-            background: #e1d2c2;
-            border-color: #b78c5a;
+            background: #3a1f4d;
+            border-color: #ebbcff;
+            transform: translate(2px, 2px);
+            box-shadow: none;
         }
 
         /* 底部落款 */
         .footer-note {
             text-align: center;
             margin-top: 2rem;
-            color: #9b8b7a;
+            color: #bba5d4;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-family: 'VT323', monospace;
         }
 
         .footer-note i {
-            color: #c7a47b;
+            color: #dbb0ff;
             margin: 0 4px;
         }
 
-        /* === 日记栏目样式 === */
+        /* === 日记栏目样式 (调整为像素风格) === */
         .diary-section {
             margin: 2.5rem 0 2rem;
         }
@@ -190,118 +225,122 @@
         }
         
         .diary-title {
-            font-size: 2rem;
-            font-weight: 500;
-            color: #4d3b28;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #f5d48c;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 3px dotted #dac5b0;
+            border-bottom: 4px dotted #b489cf;
             padding-bottom: 0.5rem;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            letter-spacing: 1px;
         }
         
         .diary-title i {
-            color: #b78c5a;
-            font-size: 1.8rem;
+            color: #dbb3ff;
+            font-size: 2rem;
         }
         
-        /* 日记卡片 — 仿手账风格，点击展开 */
         .diary-card {
-            background: #fffcf5;
-            border-radius: 28px;
-            padding: 1rem 1.5rem;
-            border: 1px solid #ede0d2;
-            box-shadow: inset 0 0 0 2px #fff, 0 10px 20px -15px #aa9b88;
+            background: rgba(35, 22, 45, 0.9);
+            border-radius: 24px;
+            padding: 1rem 1.2rem;
+            border: 4px solid #b489cf;
+            border-right-color: #643d88;
+            border-bottom-color: #4d2d6b;
+            box-shadow: inset -2px -2px 0 #23132f;
         }
         
-        /* 日记条目容器 */
         .diary-entry {
             margin: 1.2rem 0;
-            border-bottom: 2px dashed #e2d2c0;
+            border-bottom: 3px dashed #8f6eb0;
         }
         
         .diary-entry:last-child {
             border-bottom: none;
         }
         
-        /* 可点击的日记摘要 */
         .entry-summary {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 0.8rem 1rem;
             cursor: pointer;
-            background: #f9f2ea;
-            border-radius: 20px;
+            background: #2d1d38;
+            border-radius: 16px;
             transition: background 0.2s;
-            border: 1px solid #eadaca;
+            border: 3px solid #a27ac2;
+            border-right-color: #593a78;
+            border-bottom-color: #432b5a;
         }
         
         .entry-summary:hover {
-            background: #f1e4d8;
-            border-color: #d2b696;
+            background: #3e2950;
+            border-color: #dbb3ff;
         }
         
         .entry-summary i {
-            color: #b78c5a;
+            color: #f0c674;
             font-size: 1.3rem;
             width: 24px;
         }
         
         .entry-summary .entry-date {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #5f4c37;
-            min-width: 110px;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #eedba8;
+            min-width: 100px;
+            font-family: 'VT323', monospace;
+            letter-spacing: 1px;
         }
         
         .entry-summary .entry-preview {
-            color: #7a6855;
-            font-size: 1.1rem;
+            color: #cfb5e6;
+            font-size: 0.9rem;
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-family: 'Courier New', monospace;
         }
         
         .entry-summary .expand-icon {
-            color: #b78c5a;
-            font-size: 1rem;
-            transition: transform 0.2s;
+            color: #e6c384;
+            font-size: 0.9rem;
         }
         
-        /* 隐藏的详细内容 (默认不显示) */
         .entry-detail {
             display: none;
-            padding: 1.5rem 1.5rem 1rem 3rem;
-            background: #fff9f2;
-            border-radius: 0 0 20px 20px;
+            padding: 1.5rem 1.5rem 1rem 2.5rem;
+            background: #2e1d3b;
+            border-radius: 0 0 16px 16px;
             margin-top: -5px;
-            border-left: 4px solid #e8cfb8;
-            border-right: 1px solid #ede0d2;
-            border-bottom: 1px solid #ede0d2;
+            border-left: 4px solid #b489cf;
+            border-right: 3px solid #7e58a1;
+            border-bottom: 3px solid #7e58a1;
         }
         
         .entry-detail p {
-            color: #4a4138;
-            font-size: 1.15rem;
-            line-height: 1.7;
+            color: #eedcb0;
+            font-size: 0.95rem;
+            line-height: 1.8;
             margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
         }
         
         .entry-detail i {
-            color: #b78c5a;
+            color: #efc477;
             margin-right: 8px;
         }
         
-        /* 当目标被选中时显示详细内容 (利用:target实现点击展开) */
         .diary-entry:target .entry-detail {
             display: block;
         }
         
         .diary-entry:target .entry-summary {
-            background: #ecd9c6;
-            border-radius: 20px 20px 0 0;
+            background: #3a244b;
+            border-radius: 16px 16px 0 0;
             border-bottom: none;
         }
         
@@ -312,14 +351,14 @@
         /* 响应式调整 */
         @media (max-width: 600px) {
             .container { padding: 2rem 1.5rem; }
-            .main-title { font-size: 2.8rem; }
-            .main-title .smaller { font-size: 1.5rem; }
-            .diary-header { flex-direction: column; align-items: flex-start; }
+            .main-title { font-size: 2rem; }
+            .main-title .smaller { font-size: 1.2rem; }
+            .about-text { font-size: 1rem; }
             .entry-summary { flex-wrap: wrap; }
             .entry-summary .entry-preview { white-space: normal; }
         }
 
-        /* === Glitter装饰样式 (完整保留) === */
+        /* === Glitter装饰样式 (保留但调整以适配新背景) === */
         table table table td { 
             vertical-align: top !important; 
         }
@@ -370,17 +409,24 @@
         }
         
         .glitter-link {
-            font-size: 0.8rem;
-            color: #9b8b7a;
+            font-size: 0.7rem;
+            color: #bb9cd9;
             text-decoration: none;
             margin-top: 0.3rem;
+            font-family: 'VT323', monospace;
         }
         
         .glitter-link:hover {
-            color: #b78c5a;
-            text-decoration: underline;
+            color: #f0c894;
+        }
+        
+        /* 像素光标 */
+        body, body * {
+            cursor: url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'), auto;
         }
     </style>
+    <!-- 导入像素字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <!-- 图标库保留 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -396,9 +442,8 @@
 
         <!-- 主内容容器 -->
         <div class="container">
-            <!-- 标题：KETON-GARRET 前端添加新GIF -->
+            <!-- 标题：KETON-GARRET 前端GIF -->
             <div class="title-block">
-                <!-- 新GIF：放在博客阁楼标题前端 -->
                 <a href="https://www.glitter-graphics.com" target="_blank">
                     <img src="http://dl3.glitter-graphics.net/pub/1296/1296733zp6m2hotbs.gif" width="80" height="68" border="0" alt="glitter decoration">
                 </a>
@@ -408,12 +453,11 @@
                 </div>
             </div>
 
-            <!-- 关于我卡片 (含两个GIF) -->
+            <!-- 关于我卡片 -->
             <div class="about-card">
                 <div class="greeting">
                     <i class="fa-regular fa-hand-peace"></i>  
                     <span>欢迎光临</span>
-                    <!-- 第一个GIF：放在欢迎光临隔壁 -->
                     <a href="https://www.glitter-graphics.com" target="_blank">
                         <img src="http://dl2.glitter-graphics.net/pub/549/549062c91it46lgr.gif" width="115" height="115" border="0" alt="glitter decoration" style="margin-left: 5px;">
                     </a>
@@ -423,7 +467,6 @@
                 </div>
                 <div class="signature">
                     <i class="fa-regular fa-compass"></i> 保持好奇，慢慢雕琢
-                    <!-- 第二个GIF：放在签名隔壁 -->
                     <a href="https://www.glitter-graphics.com" target="_blank">
                         <img src="http://dl6.glitter-graphics.net/pub/584/584776qvkek99ty3.gif" width="50" height="50" border="0" alt="glitter decoration">
                     </a>
@@ -437,15 +480,13 @@
                         <i class="fa-regular fa-pen-to-square"></i>
                         我的日记
                     </div>
-                    <!-- 隔壁GIF (保持不变) -->
                     <a href="https://www.glitter-graphics.com" target="_blank">
                         <img src="http://dl8.glitter-graphics.net/pub/39/39368n1b2x3prdz.gif" width="83" height="49" border="0" alt="glitter decoration">
                     </a>
                 </div>
                 
-                <!-- 日记卡片：点击摘要可展开详细内容 (已删除提示语) -->
                 <div class="diary-card">
-                    <!-- 2026.02.19 日记 (新增) -->
+                    <!-- 2026.02.19 日记 (云吞超市篇) -->
                     <div class="diary-entry" id="entry-20260219">
                         <a href="#entry-20260219" style="text-decoration: none; color: inherit; display: block;">
                             <div class="entry-summary">
@@ -458,7 +499,6 @@
                         <div class="entry-detail">
                             <p><i class="fa-regular fa-note-sticky"></i> 早起有云吞~还出门逛了超市，为了不多花钱在宵夜上买了一些泡面ƪ(˘⌣˘)ʃ</p>
                             <p><i class="fa-regular fa-face-smile"></i> 晚上跟对象一起玩了peak，但正好随机到很难的关卡又失败了，payday2初尝试也特别难，坏游戏让人疯！明天还是好好玩minecraft去吧</p>
-                            <!-- 在日记尾端加入的GIF -->
                             <div style="text-align: right; margin-top: 15px;">
                                 <a href="https://www.glitter-graphics.com" target="_blank">
                                     <img src="http://dl10.glitter-graphics.net/pub/1003/1003960k949bow1ek.gif" width="50" height="50" border="0" alt="glitter decoration">
@@ -467,12 +507,12 @@
                         </div>
                     </div>
                     
-                    <!-- 2026.02.19 第一篇日记 (保留原来的那篇，但已修改日期) -->
-                    <div class="diary-entry" id="entry-20260219-first">
-                        <a href="#entry-20260219-first" style="text-decoration: none; color: inherit; display: block;">
+                    <!-- 2026.02.18 第一篇日记 (HTML学习篇) -->
+                    <div class="diary-entry" id="entry-20260218-first">
+                        <a href="#entry-20260218-first" style="text-decoration: none; color: inherit; display: block;">
                             <div class="entry-summary">
                                 <i class="fa-regular fa-pen-to-square"></i>
-                                <span class="entry-date">2026.02.19</span>
+                                <span class="entry-date">2026.02.18</span>
                                 <span class="entry-preview">今天开始学习HTML和CSS，搭建了自己的第一个个人主页...</span>
                                 <i class="fas fa-chevron-right expand-icon"></i>
                             </div>
@@ -484,37 +524,19 @@
                     </div>
                 </div>
                 
-                <!-- 为了方便您以后添加新日记，这里提供模板代码 (隐藏在源码中) -->
+                <!-- 隐藏的模板代码 (供以后复制使用) -->
                 <div style="display: none;">
-                    <!-- 
-                        新日记添加模板 (复制此块并修改内容)：
-                        
-                        <div class="diary-entry" id="entry-2026xxxx">
-                            <a href="#entry-2026xxxx" style="text-decoration: none; color: inherit; display: block;">
-                                <div class="entry-summary">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    <span class="entry-date">2026.XX.XX</span>
-                                    <span class="entry-preview">摘要文字...</span>
-                                    <i class="fas fa-chevron-right expand-icon"></i>
-                                </div>
-                            </a>
-                            <div class="entry-detail">
-                                <p><i class="fa-regular fa-note-sticky"></i> 详细内容第一段...</p>
-                                <p><i class="fa-regular fa-image"></i> 详细内容第二段...</p>
-                            </div>
-                        </div>
-                    -->
+                    <!-- 新日记模板 -->
                 </div>
             </div>
 
-            <!-- 联系我：邮箱 (中间加入新GIF) -->
+            <!-- 联系我：邮箱 -->
             <div class="contact-card">
                 <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                     <span class="contact-label">
                         <i class="fa-regular fa-envelope"></i>  
                         联系我
                     </span>
-                    <!-- 在联系我和邮箱之间加入的GIF -->
                     <a href="https://www.glitter-graphics.com" target="_blank">
                         <img src="http://dl.glitter-graphics.net/pub/250/250121x9f4ez5xgq.gif" width="100" height="70" border="0" alt="glitter decoration">
                     </a>
@@ -524,9 +546,9 @@
                 </a>
             </div>
 
-            <!-- 极简脚注 -->
+            <!-- 脚注 -->
             <div class="footer-note">
-                <i class="fa-regular fa-pen-to-square"></i>  keton 的小阁楼 · 手工搭造 · 2026
+                <i class="fa-regular fa-pen-to-square"></i>  keton 的小阁楼 · 像素手作 · 2026
             </div>
         </div>
 
@@ -538,7 +560,5 @@
             <a href="https://www.glitter-graphics.com" class="glitter-link">Extended Network Banners</a>
         </div>
     </div>
-
-    <!-- 提示：点击日记条目可展开/收起 (利用URL锚点实现) -->
 </body>
 </html>
