@@ -671,10 +671,10 @@
         </div>
     </div>
 
-    <!-- 音频元素 - 使用您GitHub仓库中的音乐文件 -->
+    <!-- 音频元素 - 使用正确的raw链接格式 -->
     <audio id="bgMusic" loop preload="auto">
-        <!-- 请将"您的用户名"替换为您的实际GitHub用户名 -->
-        <source src="https://github.com/您的用户名/您的用户名.github.io/raw/main/music/久石譲 - いのちの名前.mp3" type="audio/mpeg">
+        <!-- 重要：请将下面的"您的用户名"替换为您的实际GitHub用户名 -->
+        <source src="https://raw.githubusercontent.com/keton0819/keton0819.github.io/main/music/久石譲%20-%20いのちの名前.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放
     </audio>
 
@@ -736,7 +736,7 @@
                 </div>
                 
                 <div class="diary-card">
-                    <!-- 2026.02.25 纪念日记 (新添加) -->
+                    <!-- 2026.02.25 纪念日记 -->
                     <div class="diary-entry memorial" id="entry-20260225">
                         <a href="#entry-20260225" style="text-decoration: none; color: inherit; display: block;">
                             <div class="entry-summary">
@@ -752,7 +752,7 @@
                         </div>
                     </div>
                     
-                    <!-- 2026.02.19 日记 (云吞超市篇) -->
+                    <!-- 2026.02.19 日记 -->
                     <div class="diary-entry" id="entry-20260219">
                         <a href="#entry-20260219" style="text-decoration: none; color: inherit; display: block;">
                             <div class="entry-summary">
@@ -773,13 +773,13 @@
                         </div>
                     </div>
                     
-                    <!-- 2026.02.18 第一篇日记 (HTML学习篇) -->
+                    <!-- 2026.02.18 日记 -->
                     <div class="diary-entry" id="entry-20260218">
                         <a href="#entry-20260218" style="text-decoration: none; color: inherit; display: block;">
                             <div class="entry-summary">
                                 <i class="fa-regular fa-pen-to-square"></i>
                                 <span class="entry-date">2026.02.18</span>
-                                <span class="entry-preview">今天开始学习HTML和CSS，搭建了自己的第一个个人主页...</span>
+                                <span class="entry-preview">今天开始学习HTML和CSS...</span>
                                 <i class="fas fa-chevron-right expand-icon"></i>
                             </div>
                         </a>
@@ -867,28 +867,4 @@
             </span>
             <a href="https://www.glitter-graphics.com" class="glitter-link">Extended Network Banners</a>
         </div>
-    </div>
-
-    <!-- 音乐播放器JavaScript -->
-    <script>
-        (function() {
-            const audio = document.getElementById('bgMusic');
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            const playPauseIcon = document.getElementById('playPauseIcon');
-            const volumeSlider = document.getElementById('volumeSlider');
-            
-            // 设置初始音量
-            audio.volume = 0.5;
-            
-            // 用户首次与页面交互时尝试播放
-            function initAudio() {
-                audio.play().then(() => {
-                    playPauseIcon.className = 'fa-solid fa-pause';
-                }).catch(error => {
-                    console.log('自动播放被浏览器阻止，等待用户点击');
-                    playPauseIcon.className = 'fa-solid fa-play';
-                });
-                // 移除事件监听，只执行一次
-                document.removeEventListener('click', initAudio);
-                document.removeEventListener('scroll', initAudio);
-                document.remove
+    </div
