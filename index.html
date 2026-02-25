@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KETON-GARRET · 博客阁楼</title>
-    <!-- 复古Glitter背景 + 音乐播放器 + 完整内容 -->
+    <!-- 复古Glitter背景 + 完整内容（已删除音乐播放器） -->
     <style>
         /* === 背景应用 === */
         body {
@@ -30,7 +30,6 @@
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
-            position: relative;
         }
 
         /* 容器样式 */
@@ -45,94 +44,6 @@
             border: 4px solid #c9a8e6;
             border-right-color: #7b4f9e;
             border-bottom-color: #623d82;
-        }
-
-        /* === 音乐播放器 - 固定在右上角 === */
-        .music-player {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: rgba(45, 30, 55, 0.95);
-            backdrop-filter: blur(4px);
-            border: 3px solid #d9a7ff;
-            border-right-color: #7b4f9e;
-            border-bottom-color: #623d82;
-            border-radius: 50px;
-            padding: 8px 15px 8px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            font-family: 'VT323', 'Courier New', monospace;
-        }
-
-        .music-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #f5cf8c;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .music-info i {
-            color: #dbb3ff;
-            font-size: 1.2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.6; }
-        }
-
-        .music-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .music-btn {
-            background: #2b1738;
-            border: 2px solid #b588df;
-            border-right-color: #623a8a;
-            border-bottom-color: #4f2d72;
-            color: #e7f0b0;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.1s;
-            font-size: 1.2rem;
-        }
-
-        .music-btn:hover {
-            background: #3a1f4d;
-            border-color: #ebbcff;
-            transform: scale(1.1);
-        }
-
-        .volume-slider {
-            width: 60px;
-            height: 4px;
-            background: #2d1d38;
-            border-radius: 2px;
-            cursor: pointer;
-            -webkit-appearance: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #d9a7ff;
-            border-radius: 50%;
-            cursor: pointer;
         }
 
         /* 标题区域 */
@@ -584,12 +495,6 @@
             .container { padding: 2rem 1.5rem; }
             .main-title { font-size: 2.8rem; }
             .main-title .smaller { font-size: 1.5rem; }
-            .music-player { 
-                top: 10px; 
-                right: 10px; 
-                padding: 5px 10px;
-            }
-            .music-info span { display: none; }
         }
 
         /* === Glitter装饰样式 === */
@@ -657,27 +562,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- 音乐播放器 - 使用您上传的音乐文件 -->
-    <div class="music-player">
-        <div class="music-info">
-            <i class="fa-solid fa-music"></i>
-            <span>いのちの名前</span>
-        </div>
-        <div class="music-controls">
-            <button class="music-btn" id="playPauseBtn">
-                <i class="fa-solid fa-play" id="playPauseIcon"></i>
-            </button>
-            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
-        </div>
-    </div>
-
-    <!-- 音频元素 - 使用正确的raw链接格式 -->
-    <audio id="bgMusic" loop preload="auto">
-        <!-- 重要：请将下面的"您的用户名"替换为您的实际GitHub用户名 -->
-        <source src="https://raw.githubusercontent.com/keton0819/keton0819.github.io/main/music/久石譲%20-%20いのちの名前.mp3" type="audio/mpeg">
-        您的浏览器不支持音频播放
-    </audio>
-
     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
         <!-- 顶部Glitter装饰区 -->
         <div class="top-decoration">
@@ -700,7 +584,7 @@
                 </div>
             </div>
 
-            <!-- 关于我卡片 -->
+            <!-- 关于我卡片 - 已更新为您指定的介绍文字 -->
             <div class="about-card">
                 <div class="greeting">
                     <div class="greeting-avatar">
@@ -713,7 +597,7 @@
                     </a>
                 </div>
                 <div class="about-text">
-                    博客阁楼！我是keton，一个绘画音乐爱好者，代码新人初尝试。感谢访问。
+                    我是keton，一个绘画音乐爱好者，代码新人初尝试。狮子座，最喜欢秋天和各种冰淇淋。有一只宝贝荷兰猪叫汤圆，一只丑丑的小狗叫旺旺~感谢访问：3
                 </div>
                 <div class="signature">
                     <i class="fa-regular fa-compass"></i> 保持好奇，慢慢雕琢
@@ -723,7 +607,7 @@
                 </div>
             </div>
 
-            <!-- 我的日记栏目 - 包含新添加的纪念日记 -->
+            <!-- 我的日记栏目 -->
             <div class="diary-section">
                 <div class="diary-header">
                     <div class="diary-title">
@@ -867,4 +751,6 @@
             </span>
             <a href="https://www.glitter-graphics.com" class="glitter-link">Extended Network Banners</a>
         </div>
-    </div
+    </div>
+</body>
+</html>
